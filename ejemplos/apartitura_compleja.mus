@@ -1,0 +1,227 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// SINFONÍA EXPERIMENTAL — Partitura Compleja para Analizador Léxico
+// Compositor: Sistema Automático de Pruebas
+// Año: 2026
+// ═══════════════════════════════════════════════════════════════════════════
+
+HOJA A4
+
+TITULO "Sinfonía en Do Mayor - Movimiento I: Allegro Maestoso"
+AUTOR "Ludwig van Compilador"
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SECCIÓN A: INTRODUCCIÓN ORQUESTAL
+// ═══════════════════════════════════════════════════════════════════════════
+
+PENTAGRAMA 1
+CLAVE SOL
+COMPAS 4/4
+TEMPO 120
+VOLUMEN 85
+INSTRUMENTO VIOLIN
+
+// Tema principal — violines I
+DO#:NEGRA
+RE:NEGRA
+MI:NEGRA
+FA#:NEGRA |
+
+SOL:BLANCA
+LA:BLANCA |
+
+// Variación con alteraciones
+SIb:CORCHEA
+LA:CORCHEA
+SOL:NEGRA
+SOL#:NEGRA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN B: SEGUNDO PENTAGRAMA (VIOLINES II)
+// ─────────────────────────────────────────────────────────────────────────
+
+PENTAGRAMA 2
+CLAVE SOL
+COMPAS 4/4
+TEMPO 120
+VOLUMEN 80
+INSTRUMENTO VIOLIN
+
+// Contrapunto armónico
+DO:NEGRA
+MI:NEGRA
+SOL:NEGRA
+DO#:NEGRA |
+
+RE:BLANCA
+FA#:BLANCA |
+
+MIb:SEMICORCHEA
+RE:SEMICORCHEA
+DOb:SEMICORCHEA
+SI:SEMICORCHEA
+LA:NEGRA
+SOL:NEGRA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN C: VIOLA (Pentagrama 3)
+// ─────────────────────────────────────────────────────────────────────────
+
+PENTAGRAMA 3
+CLAVE SOL
+COMPAS 4/4
+TEMPO 120
+VOLUMEN 75
+INSTRUMENTO GUITARRA
+
+// Arpegios complejos
+DO:FUSA
+MI:FUSA
+SOL:FUSA
+DO:FUSA |
+
+RE:FUSA
+FA#:FUSA
+LA:FUSA
+RE:FUSA |
+
+// Bloque repetido
+REPETIR {
+    DO:CORCHEA
+    RE:CORCHEA
+    MI:CORCHEA
+    FA:CORCHEA |
+    
+    SOL:NEGRA
+    LA:NEGRA
+    SI:BLANCA |
+} FIN
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN D: VARIACIÓN CON BIS (Bis = Repetir bloque)
+// ─────────────────────────────────────────────────────────────────────────
+
+BIS {
+    DO:REDONDA |
+    RE:REDONDA |
+    MI:REDONDA |
+    FA:REDONDA |
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN E: PASAJE TÉCNICO CON MUCHOS ELEMENTOS
+// ─────────────────────────────────────────────────────────────────────────
+
+// Escala ascendente con alteraciones
+DO:SEMICORCHEA
+DO#:SEMICORCHEA
+RE:SEMICORCHEA
+MIb:SEMICORCHEA
+MI:SEMICORCHEA
+FA:SEMICORCHEA
+FA#:SEMICORCHEA
+SOL:SEMICORCHEA |
+
+LAb:SEMICORCHEA
+LA:SEMICORCHEA
+SIb:SEMICORCHEA
+SI:SEMICORCHEA
+DO:NEGRA
+SILENCIO:NEGRA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN F: CLÍMAX CON DIFERENTES DURACIONES
+// ─────────────────────────────────────────────────────────────────────────
+
+DO:FUSA
+RE:FUSA
+MI:FUSA
+FA:FUSA
+SOL:CORCHEA
+LA:CORCHEA
+SI:NEGRA |
+
+// Notas largas con énfasis
+DO#:BLANCA
+RE#:BLANCA |
+
+FA:REDONDA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN G: RITMO SINCOPADO COMPLEJO
+// ─────────────────────────────────────────────────────────────────────────
+
+SOL:SEMICORCHEA
+SILENCIO:SEMICORCHEA
+LA:SEMICORCHEA
+SILENCIO:SEMICORCHEA
+SI:SEMICORCHEA
+SILENCIO:SEMICORCHEA
+DO:SEMICORCHEA
+SILENCIO:SEMICORCHEA |
+
+RE:NEGRA
+SILENCIO:CORCHEA
+MI:CORCHEA
+FA:NEGRA
+SILENCIO:BLANCA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN H: CAMBIO DE COMPÁS E INSTRUMENTO
+// ─────────────────────────────────────────────────────────────────────────
+
+CLAVE MENOR
+COMPAS 3/8
+INSTRUMENTO FLAUTA
+TEMPO 140
+VOLUMEN 90
+
+DO:CORCHEA
+RE:CORCHEA
+MI:CORCHEA |
+
+FA:CORCHEA
+SOL:CORCHEA
+LA:CORCHEA |
+
+SIb:FUSA
+SI:FUSA
+DO:FUSA
+DO#:FUSA
+RE:CORCHEA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN I: FINAL CON REPETICIÓN MÚLTIPLE
+// ─────────────────────────────────────────────────────────────────────────
+
+REPETIR {
+    DO:NEGRA
+    MI:NEGRA
+    SOL:NEGRA |
+} FIN
+
+// Outro musical
+CLAVE MAYOR
+COMPAS 2/4
+TEMPO 90
+VOLUMEN 70
+
+LA:BLANCA |
+SOL:BLANCA |
+FA:BLANCA |
+MI:NEGRA
+RE:NEGRA |
+
+DO:REDONDA |
+
+// ─────────────────────────────────────────────────────────────────────────
+// SECCIÓN J: FINAL CON SILENCIOS
+// ─────────────────────────────────────────────────────────────────────────
+
+SILENCIO:NEGRA
+SILENCIO:NEGRA |
+
+SILENCIO:BLANCA |
+
+SILENCIO:REDONDA |
+
+// FIN DE LA PARTITURA COMPLEJA

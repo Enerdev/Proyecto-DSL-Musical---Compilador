@@ -1,0 +1,15 @@
+# Binarios
+*.o
+*.exe
+compilador
+lexico
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~

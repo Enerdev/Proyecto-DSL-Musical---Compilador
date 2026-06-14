@@ -1,0 +1,19 @@
+HOJA A4
+TITULO "Prueba Errores
+AUTOR "Estudiante"
+PENTAGRAMA 2
+CLAVE DO
+COMPAS 4/
+INSTRUMENTO ORGANO
+
+DO:NEGRA
+MI:NEGRA
+SOL:NEGRA
+FA:BLANCA |
+
+DECLARAR 123var : entero
+DECLARAR ok : entero
+no_declarada = 99
+MOSTRAR ok
+
+@@@

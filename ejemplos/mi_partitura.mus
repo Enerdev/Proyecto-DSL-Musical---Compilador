@@ -1,0 +1,117 @@
+HOJA A4
+TITULO "Partitura Compleja - Ensayo"
+AUTOR "Emerson"
+
+// Configuración general
+PENTAGRAMA 1
+CLAVE SOL
+COMPAS 4/4
+TEMPO 110
+VOLUMEN 90
+INSTRUMENTO PIANO
+
+// Tema principal
+DO:NEGRA
+MI:NEGRA
+SOL:NEGRA
+DO:NEGRA |
+
+RE:BLANCA
+MI:CORCHEA
+FA:CORCHEA
+SOL:NEGRA |
+
+// Cambio armónico con alteraciones
+LA:NEGRA
+SIb:NEGRA
+DO#:BLANCA |
+
+// Segunda sección con repetición y bis
+BIS {
+    SOL:SEMICORCHEA
+    LA:SEMICORCHEA
+    SI:SEMICORCHEA
+    DO:SEMICORCHEA |
+
+    RE:CORCHEA
+    MI:CORCHEA
+    FA:CORCHEA
+    SOL:CORCHEA |
+} 
+
+PENTAGRAMA 2
+CLAVE SOL
+COMPAS 4/4
+TEMPO 110
+VOLUMEN 80
+INSTRUMENTO VIOLIN
+
+// Contrapunto
+DO:BLANCA
+MI:CORCHEA
+SOL:CORCHEA
+DO:CORCHEA |
+
+RE:NEGRA
+SI:NEGRA
+LA:BLANCA |
+
+// Pasaje rápido
+RE:CORCHEA
+MI:CORCHEA
+FA:CORCHEA
+SOL:CORCHEA |
+
+LA:CORCHEA
+SI:CORCHEA
+DO:CORCHEA
+RE:CORCHEA |
+
+// Bloque con repetición
+REPETIR {
+    MI:NEGRA
+    SOL:NEGRA
+    SI:NEGRA
+    RE:NEGRA |
+} FIN
+
+// Variables y control de flujo
+DECLARAR repeticiones : entero
+repeticiones = 3
+MOSTRAR repeticiones
+
+DECLARAR nombre_partitura : cadena
+nombre_partitura = "Ensayo Complejo"
+MOSTRAR nombre_partitura
+
+SI (repeticiones) {
+    MOSTRAR "Iniciando repetición"
+} FIN
+
+REPETIR (2) {
+    FA:BLANCA
+    SOL:CORCHEA
+    LA:CORCHEA
+    SI:CORCHEA |
+    DO:NEGRA
+    SILENCIO:CORCHEA
+    RE:CORCHEA |
+} FIN
+
+// Cambio de compás y finalización
+CLAVE MENOR
+COMPAS 3/8
+INSTRUMENTO FLAUTA
+TEMPO 130
+VOLUMEN 85
+
+DO:CORCHEA
+RE:CORCHEA
+MI:CORCHEA |
+
+FA:CORCHEA
+SOL:CORCHEA
+LA:CORCHEA |
+
+DO:REDONDA |
+

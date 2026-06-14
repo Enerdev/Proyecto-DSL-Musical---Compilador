@@ -1,0 +1,235 @@
+HOJA A4
+TITULO "Gran Sinfonía Compleja"
+AUTOR "Emerson"
+
+// ------------------------------------------------------------
+// Sección 1: Introducción orquestal
+// ------------------------------------------------------------
+PENTAGRAMA 1
+CLAVE SOL
+COMPAS 4/4
+TEMPO 130
+VOLUMEN 92
+INSTRUMENTO VIOLIN
+
+DO:NEGRA
+RE:NEGRA
+MI:NEGRA
+FA:NEGRA |
+
+SOL:BLANCA
+LA:CORCHEA
+SI:CORCHEA
+DO:NEGRA |
+
+RE:NEGRA
+MI:NEGRA
+FA:NEGRA
+SOL:NEGRA |
+
+LA:BLANCA
+SI:CORCHEA
+DO:CORCHEA
+RE:CORCHEA |
+
+// ------------------------------------------------------------
+// Sección 2: Segunda voz de cuerda
+// ------------------------------------------------------------
+PENTAGRAMA 2
+CLAVE SOL
+COMPAS 4/4
+TEMPO 130
+VOLUMEN 85
+INSTRUMENTO VIOLONCHELO
+
+MI:BLANCA
+RE:CORCHEA
+DO:CORCHEA
+SI:NEGRA |
+
+LA:NEGRA
+SOL:NEGRA
+FA:BLANCA |
+
+DO:SEMICORCHEA
+RE:SEMICORCHEA
+MI:SEMICORCHEA
+FA:SEMICORCHEA |
+
+SOL:CORCHEA
+LA:CORCHEA
+SI:CORCHEA
+DO:CORCHEA |
+
+// ------------------------------------------------------------
+// Sección 3: Desarrollo con BIS y repetición
+// ------------------------------------------------------------
+BIS {
+    DO:SEMICORCHEA
+    RE:SEMICORCHEA
+    MI:SEMICORCHEA
+    FA:SEMICORCHEA |
+
+    SOL:CORCHEA
+    LA:CORCHEA
+    SI:CORCHEA
+    DO:CORCHEA |
+}
+
+BIS {
+    RE:CORCHEA
+    MI:CORCHEA
+    FA:CORCHEA
+    SOL:CORCHEA |
+
+    LA:CORCHEA
+    SI:CORCHEA
+    DO:CORCHEA
+    RE:CORCHEA |
+}
+
+REPETIR {
+    MI:NEGRA
+    SOL:NEGRA
+    SI:NEGRA
+    DO:NEGRA |
+
+    RE:BLANCA
+    MI:CORCHEA
+    FA:CORCHEA
+    SOL:NEGRA |
+} FIN
+
+// ------------------------------------------------------------
+// Sección 4: Variables y control de flujo
+// ------------------------------------------------------------
+DECLARAR repeticiones : entero
+DECLARAR mensaje : cadena
+DECLARAR exito : booleano
+
+repeticiones = 4
+mensaje = "Pasaje Orquestal"
+exito = verdadero
+
+MOSTRAR mensaje
+MOSTRAR repeticiones
+MOSTRAR exito
+
+SI (exito) {
+    MOSTRAR "La orquesta está lista"
+} FIN
+
+SI (repeticiones) {
+    MOSTRAR "Repeticiones activas"
+} FIN
+
+// ------------------------------------------------------------
+// Sección 5: Cambio de compás y textura rítmica
+// ------------------------------------------------------------
+CLAVE MENOR
+COMPAS 6/8
+INSTRUMENTO FLAUTA
+TEMPO 145
+VOLUMEN 88
+
+DO:CORCHEA
+RE:CORCHEA
+MI:CORCHEA
+FA:CORCHEA
+SOL:CORCHEA
+LA:CORCHEA |
+
+SI:NEGRA
+DO:CORCHEA
+RE:CORCHEA |
+
+MI:CORCHEA
+FA:CORCHEA
+SOL:CORCHEA
+LA:CORCHEA |
+
+SI:CORCHEA
+DO:CORCHEA
+RE:CORCHEA
+MI:CORCHEA |
+
+// ------------------------------------------------------------
+// Sección 6: Segundo pentagrama con contracanto
+// ------------------------------------------------------------
+PENTAGRAMA 3
+CLAVE SOL
+COMPAS 6/8
+INSTRUMENTO OBOE
+TEMPO 145
+VOLUMEN 90
+
+SOL:CORCHEA
+LA:CORCHEA
+SI:CORCHEA
+DO:CORCHEA |
+
+RE:CORCHEA
+MI:CORCHEA
+FA:CORCHEA
+SOL:CORCHEA |
+
+LA:NEGRA
+SI:CORCHEA
+DO:CORCHEA
+RE:CORCHEA |
+
+MI:BLANCA |
+
+// ------------------------------------------------------------
+// Sección 7: Bucle de repetición con alteraciones
+// ------------------------------------------------------------
+REPETIR (2) {
+    DO:NEGRA
+    FA:NEGRA
+    LA:NEGRA
+    DO:NEGRA |
+
+    SIb:CORCHEA
+    DO:CORCHEA
+    RE:CORCHEA
+    MI:CORCHEA |
+} FIN
+
+REPETIR {
+    SOL:CORCHEA
+    LA:CORCHEA
+    SI:CORCHEA
+    DO:CORCHEA |
+
+    RE:NEGRA
+    MI:NEGRA
+    FA:BLANCA |
+} FIN
+
+// ------------------------------------------------------------
+// Sección 8: Clímax y final extendido
+// ------------------------------------------------------------
+CLAVE SOL
+COMPAS 4/4
+INSTRUMENTO PIANO
+TEMPO 120
+VOLUMEN 95
+
+DO:BLANCA
+RE:BLANCA
+MI:BLANCA |
+
+FA:CORCHEA
+SOL:CORCHEA
+LA:CORCHEA
+SI:CORCHEA |
+
+DO:NEGRA
+RE:NEGRA
+MI:NEGRA
+FA:NEGRA |
+
+SOL:REDONDA |
+
+// Cierre de la sinfonía
+SILENCIO:REDONDA |
