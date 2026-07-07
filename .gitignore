@@ -2,6 +2,7 @@
 *.o
 *.exe
 compilador
+compilador_menu
 lexico
 
 # Archivos de sistema

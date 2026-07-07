@@ -91,9 +91,21 @@ g++ -fdiagnostics-color=always -g main.cpp -o compilador
 
 ## Cómo Ejecutar
 
+### Opción 1: Línea de comandos (recomendado)
 ```bash
-./compilador
+./compilador basico.mus
+./compilador intermedio.mus
+./compilador ejemplos/partitura.mus
+./compilador              # Usa partitura.mus por defecto
 ```
+
+### Opción 2: Menú interactivo
+```bash
+g++ -fdiagnostics-color=always -g main_menu.cpp -o compilador_menu
+./compilador_menu
+```
+
+**📖 Ver [COMO_USAR.md](COMO_USAR.md) para guía completa**
 
 ## Errores Léxicos Detectados
 

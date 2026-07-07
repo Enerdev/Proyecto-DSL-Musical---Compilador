@@ -27,6 +27,12 @@ using namespace std;
 #define REPETIR         10
 #define FIN_REPETIR     11
 
+// Palabras clave - Sentencias de programacion
+#define FIN_KW          12   // FIN (cierre de SI / REPETIR)
+#define DECLARAR        13
+#define MOSTRAR         14
+#define INGRESAR        15
+
 // Notas musicales
 #define DO              20
 #define RE              21
@@ -52,6 +58,9 @@ using namespace std;
 #define VIOLIN          43
 #define FLAUTA          44
 #define TROMPETA        45
+#define VIOLONCHELO     46
+#define CELLO           47
+#define OBOE            48
 
 // Modos armonicos
 #define MAYOR           50
@@ -71,6 +80,15 @@ using namespace std;
 #define CADENA          70
 #define ENTERO          71
 #define FRACCION        72
+
+// Identificadores de usuario y tipos de dato
+#define IDENTIFICADOR   80
+#define TIPO_ENTERO     82
+#define TIPO_CADENA     83
+#define TIPO_BOOLEANO   84
+#define VERDADERO       85
+#define FALSO           86
+#define IGUAL           87   // =
 
 // Especiales
 #define FIN             666
@@ -244,6 +262,24 @@ class AnalizadorLexico {
             ts.Insertar("MAYOR", MAYOR, "modo", vacio, vacio);
             ts.Insertar("MENOR", MENOR, "modo", vacio, vacio);
 
+            // ── Instrumentos adicionales ──
+            ts.Insertar("VIOLONCHELO", VIOLONCHELO, "instrumento", vacio, vacio);
+            ts.Insertar("CELLO",       CELLO,       "instrumento", vacio, vacio);
+            ts.Insertar("OBOE",        OBOE,        "instrumento", vacio, vacio);
+
+            // ── Sentencias de programacion ──
+            ts.Insertar("FIN",      FIN_KW,    "pclave",  vacio, vacio);
+            ts.Insertar("DECLARAR", DECLARAR,  "pclave",  vacio, vacio);
+            ts.Insertar("MOSTRAR",  MOSTRAR,   "pclave",  vacio, vacio);
+            ts.Insertar("INGRESAR", INGRESAR,  "pclave",  vacio, vacio);
+
+            // ── Tipos de dato y literales booleanos ──
+            ts.Insertar("entero",   TIPO_ENTERO,   "tipo",    vacio, vacio);
+            ts.Insertar("cadena",   TIPO_CADENA,   "tipo",    vacio, vacio);
+            ts.Insertar("booleano", TIPO_BOOLEANO, "tipo",    vacio, vacio);
+            ts.Insertar("verdadero",VERDADERO,     "literal", vacio, vacio);
+            ts.Insertar("falso",    FALSO,         "literal", vacio, vacio);
+
             // ── Signos de un caracter ──
             ts.Insertar(":",  DOSPUNTOS,   "pclave", vacio, vacio);
             ts.Insertar("|",  BARRA,       "pclave", vacio, vacio);
@@ -252,11 +288,12 @@ class AnalizadorLexico {
             ts.Insertar("(",  APARENTESIS, "pclave", vacio, vacio);
             ts.Insertar(")",  CPARENTESIS, "pclave", vacio, vacio);
             ts.Insertar("#",  SOSTENIDO,   "pclave", vacio, vacio);
+            ts.Insertar("=",  IGUAL,       "pclave", vacio, vacio);
         }
 
         // ── Verifica si un caracter es un signo del lenguaje ──
         bool esSigno(char c) {
-            const char signos[] = ":|{}()#";
+            const char signos[] = ":|{}()#=";
             int k = 0;
             while (signos[k] != '\0') {
                 if (signos[k] == c) return true;
@@ -265,75 +302,102 @@ class AnalizadorLexico {
             return false;
         }
 
+        // ── Metodos de acceso para el analizador sintactico ──
+        void   reset()             { i = 0; nLinea = 1; }
+        int    getLinea()    const  { return nLinea; }
+        string getVariable() const  { return variable; }
+        string getNumero()   const  { return numero; }
+
         // ── Devuelve nombre legible del token ──
         string nombreToken(int tok) {
             switch(tok) {
-                case HOJA:        return "HOJA";
-                case A4:          return "A4";
-                case TITULO:      return "TITULO";
-                case AUTOR:       return "AUTOR";
-                case PENTAGRAMA:  return "PENTAGRAMA";
-                case CLAVE:       return "CLAVE";
-                case COMPAS:      return "COMPAS";
-                case BIS:         return "BIS";
-                case TEMPO:       return "TEMPO";
-                case VOLUMEN:     return "VOLUMEN";
-                case REPETIR:     return "REPETIR";
-                case FIN_REPETIR: return "FIN_REPETIR";
-                case DO:          return "DO";
-                case RE:          return "RE";
-                case MI:          return "MI";
-                case FA:          return "FA";
-                case SOL:         return "SOL";
-                case LA:          return "LA";
-                case SI:          return "SI";
-                case SILENCIO:    return "SILENCIO";
-                case NEGRA:       return "NEGRA";
-                case BLANCA:      return "BLANCA";
-                case REDONDA:     return "REDONDA";
-                case CORCHEA:     return "CORCHEA";
-                case SEMICORCHEA: return "SEMICORCHEA";
-                case FUSA:        return "FUSA";
-                case INSTRUMENTO: return "INSTRUMENTO";
-                case PIANO:       return "PIANO";
-                case GUITARRA:    return "GUITARRA";
-                case VIOLIN:      return "VIOLIN";
-                case FLAUTA:      return "FLAUTA";
-                case TROMPETA:    return "TROMPETA";
-                case MAYOR:       return "MAYOR";
-                case MENOR:       return "MENOR";
-                case DOSPUNTOS:   return "DOSPUNTOS";
-                case BARRA:       return "BARRA";
-                case ALLAVE:      return "ALLAVE";
-                case CLLAVE:      return "CLLAVE";
-                case APARENTESIS: return "APAR";
-                case CPARENTESIS: return "CPAR";
-                case SOSTENIDO:   return "SOSTENIDO";
-                case BEMOL:       return "BEMOL";
-                case CADENA:      return "CADENA";
-                case ENTERO:      return "ENTERO";
-                case FRACCION:    return "FRACCION";
-                case FIN:         return "FIN";
-                case EL1:         return "EL1";
-                case EL2:         return "EL2";
-                case EL3:         return "EL3";
-                case EL4:         return "EL4";
-                default:          return "DESCONOCIDO";
+                case HOJA:         return "HOJA";
+                case A4:           return "A4";
+                case TITULO:       return "TITULO";
+                case AUTOR:        return "AUTOR";
+                case PENTAGRAMA:   return "PENTAGRAMA";
+                case CLAVE:        return "CLAVE";
+                case COMPAS:       return "COMPAS";
+                case BIS:          return "BIS";
+                case TEMPO:        return "TEMPO";
+                case VOLUMEN:      return "VOLUMEN";
+                case REPETIR:      return "REPETIR";
+                case FIN_REPETIR:  return "FIN_REPETIR";
+                case FIN_KW:       return "FIN";
+                case DECLARAR:     return "DECLARAR";
+                case MOSTRAR:      return "MOSTRAR";
+                case INGRESAR:     return "INGRESAR";
+                case DO:           return "DO";
+                case RE:           return "RE";
+                case MI:           return "MI";
+                case FA:           return "FA";
+                case SOL:          return "SOL";
+                case LA:           return "LA";
+                case SI:           return "SI";
+                case SILENCIO:     return "SILENCIO";
+                case NEGRA:        return "NEGRA";
+                case BLANCA:       return "BLANCA";
+                case REDONDA:      return "REDONDA";
+                case CORCHEA:      return "CORCHEA";
+                case SEMICORCHEA:  return "SEMICORCHEA";
+                case FUSA:         return "FUSA";
+                case INSTRUMENTO:  return "INSTRUMENTO";
+                case PIANO:        return "PIANO";
+                case GUITARRA:     return "GUITARRA";
+                case VIOLIN:       return "VIOLIN";
+                case FLAUTA:       return "FLAUTA";
+                case TROMPETA:     return "TROMPETA";
+                case VIOLONCHELO:  return "VIOLONCHELO";
+                case CELLO:        return "CELLO";
+                case OBOE:         return "OBOE";
+                case MAYOR:        return "MAYOR";
+                case MENOR:        return "MENOR";
+                case DOSPUNTOS:    return "DOSPUNTOS";
+                case BARRA:        return "BARRA";
+                case ALLAVE:       return "ALLAVE";
+                case CLLAVE:       return "CLLAVE";
+                case APARENTESIS:  return "APAR";
+                case CPARENTESIS:  return "CPAR";
+                case SOSTENIDO:    return "SOSTENIDO";
+                case BEMOL:        return "BEMOL";
+                case IGUAL:        return "IGUAL";
+                case CADENA:       return "CADENA";
+                case ENTERO:       return "ENTERO";
+                case FRACCION:     return "FRACCION";
+                case IDENTIFICADOR:return "IDENTIFICADOR";
+                case TIPO_ENTERO:  return "TIPO_ENTERO";
+                case TIPO_CADENA:  return "TIPO_CADENA";
+                case TIPO_BOOLEANO:return "TIPO_BOOLEANO";
+                case VERDADERO:    return "VERDADERO";
+                case FALSO:        return "FALSO";
+                case FIN:          return "FIN";
+                case EL1:          return "EL1";
+                case EL2:          return "EL2";
+                case EL3:          return "EL3";
+                case EL4:          return "EL4";
+                default:           return "DESCONOCIDO";
             }
         }
 
         // ── Devuelve categoria del token ──
         string categoriaToken(int tok) {
-            if (tok >= 0   && tok <= 11) return "Palabra clave";
+            if (tok >= 0   && tok <= 15) return "Palabra clave";
             if (tok >= 20  && tok <= 27) return "Nota";
             if (tok >= 30  && tok <= 35) return "Duracion";
             if (tok == 40)               return "Palabra clave";
-            if (tok >= 41  && tok <= 45) return "Instrumento";
+            if (tok >= 41  && tok <= 48) return "Instrumento";
             if (tok == 50  || tok == 51) return "Modo armonico";
             if (tok >= 60  && tok <= 67) return "Signo";
             if (tok == 70)               return "Cadena literal";
             if (tok == 71)               return "Numero entero";
             if (tok == 72)               return "Fraccion";
+            if (tok == IDENTIFICADOR)    return "Identificador";
+            if (tok == TIPO_ENTERO  ||
+                tok == TIPO_CADENA  ||
+                tok == TIPO_BOOLEANO)    return "Tipo de dato";
+            if (tok == VERDADERO ||
+                tok == FALSO)            return "Literal booleano";
+            if (tok == IGUAL)            return "Operador";
             if (tok == FIN)              return "Fin de entrada";
             if (tok >= 901 && tok <= 904)return "ERROR LEXICO";
             return "?";
@@ -391,8 +455,22 @@ class AnalizadorLexico {
                 if (ts.Buscar(lex, attr)) {
                     return attr.token;
                 }
-                // EL3: identificador no reconocido
-                return EL3;
+
+                // Notacion con bemol pegado: "SIb", "MIb", "REb", etc.
+                // Si termina en 'b' y el prefijo es una nota conocida,
+                // devolver la nota y "devolver" la 'b' al buffer de entrada.
+                if (lex.length() >= 2 && lex.back() == 'b') {
+                    string prefijo = lex.substr(0, lex.length() - 1);
+                    Atributos attrPref;
+                    if (ts.Buscar(prefijo, attrPref) && attrPref.tipo == "nota") {
+                        i--;           // retrocede: la 'b' sera el proximo token
+                        variable = prefijo;
+                        return attrPref.token;
+                    }
+                }
+
+                // Identificador de usuario (variable, nombre no reconocido)
+                return IDENTIFICADOR;
             }
 
             // q2 — entero o fraccion N/M
@@ -488,15 +566,16 @@ class AnalizadorLexico {
                 // Construir lexema visible
                 string lexVis;
                 switch (tok) {
-                    case CADENA:   lexVis = "\"" + cadenaStr + "\""; break;
-                    case ENTERO:   lexVis = numero;   break;
-                    case FRACCION: lexVis = fraccion; break;
-                    case EL1:      lexVis = "\"" + cadenaStr; break;
-                    case EL2:      lexVis = numero;   break;
-                    case EL3:      lexVis = variable; break;
-                    case EL4:      lexVis = string(1, cad[i-1]); break;
-                    case BEMOL:    lexVis = "b";       break;
-                    case FIN:      lexVis = "EOF";     break;
+                    case CADENA:       lexVis = "\"" + cadenaStr + "\""; break;
+                    case ENTERO:       lexVis = numero;   break;
+                    case FRACCION:     lexVis = fraccion; break;
+                    case IDENTIFICADOR:lexVis = variable; break;
+                    case EL1:          lexVis = "\"" + cadenaStr; break;
+                    case EL2:          lexVis = numero;   break;
+                    case EL3:          lexVis = variable; break;
+                    case EL4:          lexVis = string(1, cad[i-1]); break;
+                    case BEMOL:        lexVis = "b";       break;
+                    case FIN:          lexVis = "EOF";     break;
                     default: {
                         // Para palabras clave y signos buscamos el lexema en la tabla
                         Atributos attr;

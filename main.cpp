@@ -10,10 +10,13 @@
 ***/
 
 #include <fstream>
+#include <string>
 #include "analizador_lexico.h"
 #include "analizador_sintactico.h"
 
-int main() {
+using namespace std;
+
+int main(int argc, char *argv[]) {
     cout << "\n";
     cout << "╔══════════════════════════════════════════╗\n";
     cout << "║   DSL MUSICAL -- COMPILADOR             ║\n";
@@ -21,11 +24,23 @@ int main() {
     cout << "║   Curso: Compiladores                   ║\n";
     cout << "╚══════════════════════════════════════════╝\n";
 
-    const char archivo[] = "ejemplos/partitura.mus";
+    // Determinar archivo a procesar
+    string archivo;
+    if (argc > 1) {
+        // Si se pasa archivo como argumento, usarlo
+        archivo = argv[1];
+        // Si no tiene ruta, asumir que está en ejemplos/
+        if (archivo.find("/") == string::npos && archivo.find("\\") == string::npos) {
+            archivo = "ejemplos/" + archivo;
+        }
+    } else {
+        // Por defecto, usar partitura.mus
+        archivo = "ejemplos/partitura.mus";
+    }
     AnalizadorLexico *lexer = new AnalizadorLexico("");
 
     // Intentar leer archivo
-    if (lexer->leerArchivo(archivo)) {
+    if (lexer->leerArchivo(archivo.c_str())) {
         cout << "\n  Archivo: " << archivo << "\n";
     } else {
         cout << "\n  Archivo '" << archivo << "' no encontrado. Usando ejemplo embebido.\n";
